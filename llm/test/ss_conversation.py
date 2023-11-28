@@ -2,12 +2,15 @@ import typer
 from rich.prompt import Prompt
 from typing import Optional, List
 
+from phi.utils.log import set_log_level_to_debug
 from phi.conversation import Conversation
 from phi.knowledge.pdf import PDFUrlKnowledgeBase
 from phi.vectordb.singlestore import SingleStoreVector
 from phi.storage.conversation.singlestore import SingleStoreConversationStorage
 
-ss_db_url = "mysql+pymysql://admin:passkey@svc-3nb226d8-ee13-47f0-8ca4-2dc820773442-dml.aws-oregon-2.svc.singlestore.com:3306/dbTest"
+set_log_level_to_debug()
+
+ss_db_url = "mysql+pymysql://admin:uuYH1u9D1Q1e5Ds6PoRG4BxwlBTp7zcJ@svc-7fe9d1e6-de19-427e-bf35-bfb4ee219515-dml.aws-virginia-6.svc.singlestore.com:3306"
 
 knowledge_base = PDFUrlKnowledgeBase(
     urls=[
@@ -27,6 +30,7 @@ storage = SingleStoreConversationStorage(
 
 
 conversation = Conversation(
+    debug_mode=True,
     knowledge_base=knowledge_base,
     storage=storage,
     add_references_to_prompt=True,

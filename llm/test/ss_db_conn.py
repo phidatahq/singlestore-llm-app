@@ -1,11 +1,11 @@
 import sqlalchemy
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
+ss_db_url = "mysql+pymysql://admin:pass@svc-7fe9dml.aws-virginia-6.svc.singlestore.com:3306"
 
-engine = create_engine('mysql+pymysql://admin:passkey@svc-3nb226d8-ee13-47f0-8ca4-2dc820773442-dml.aws-oregon-2.svc.singlestore.com:3306/dbTest')
+engine = create_engine(ss_db_url)
 conn = engine.connect()
-conn.execute("DELETE FROM stock WHERE code = 'rtky'")
-result = conn.execute("SELECT * FROM stock")
+result = conn.execute(text("select now();"))
 for row in result:
 	print(row)
 conn.close()
