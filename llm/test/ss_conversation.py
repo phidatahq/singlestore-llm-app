@@ -10,7 +10,7 @@ from phi.storage.conversation.singlestore import SingleStoreConversationStorage
 
 set_log_level_to_debug()
 
-ss_db_url = "mysql+pymysql://admin:uuYH1u9D1Q1e5Ds6PoRG4BxwlBTp7zcJ@svc-7fe9d1e6-de19-427e-bf35-bfb4ee219515-dml.aws-virginia-6.svc.singlestore.com:3306"
+ss_db_url = "mysql+pymysql://admin:pass@svc-7fe9d1e6-de19-427e-bf35-bfb4ee219515-dml.aws-virginia-6.svc.singlestore.com:3306"
 
 knowledge_base = PDFUrlKnowledgeBase(
     urls=[
